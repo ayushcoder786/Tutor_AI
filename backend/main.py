@@ -1,6 +1,12 @@
 from fastapi import FastAPI
 from controller.authController import router as AuthRouter
-app = FastAPI(title="TutorAI", description="An AI-powered tutoring platform", version="1.0.0")
+from database.mongodb import lifespan
+app = FastAPI(
+    title="TutorAI", 
+    description="An AI-powered tutoring platform", 
+    version="1.0.0",
+    lifespan=lifespan
+    )
 
 app.include_router(AuthRouter)
 
