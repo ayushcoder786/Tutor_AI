@@ -9,5 +9,6 @@ async def signup(data: SignupModel, request:Request):
     return await auth.signup(data, request.app.state.db)
 
 @router.post("/login")
-async def login(data: LoginModel):
-    return auth.login(data)
+async def login(data: LoginModel, request:Request):
+    return await auth.login(data, request.app.state.db)
+
