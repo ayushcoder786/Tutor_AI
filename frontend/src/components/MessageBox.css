@@ -1,0 +1,221 @@
+.messagebox-overlay {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: var(--color-background-overlay-5);
+  z-index: 1000 !important;
+
+  backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.messagebox {
+  position: relative !important;
+
+  width: 100%;
+  max-width: 420px;
+
+  background: var(--color-white);
+  border-radius: 10px;
+
+  padding: 24px;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.28);
+  z-index: 1 !important;
+  animation: messagebox-show 0.18s ease-out;
+}
+
+@keyframes messagebox-show {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.messagebox-close {
+  position: absolute;
+
+  top: 12px;
+  right: 12px;
+
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 7px;
+
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+.messagebox-close:hover {
+  background: var(--color-background);
+  color: var(--color-text-secondary);
+}
+
+.messagebox-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  margin-bottom: 16px;
+}
+
+.messagebox.success .messagebox-icon {
+  background: var(--color-success-light);
+  color: var(--color-success);
+}
+
+.messagebox.error .messagebox-icon {
+  background: var(--color-danger-light);
+  color: var(--color-danger);
+}
+
+.messagebox.warning .messagebox-icon {
+  background: var(--color-warning-light);
+  color: var(--color-warning);
+}
+
+.messagebox.info .messagebox-icon {
+  background: var(--color-info-light);
+  color: var(--color-info);
+}
+
+.messagebox-content {
+  padding-right: 10px;
+}
+
+.messagebox-content h3 {
+  margin: 0 0 8px;
+  color: var(--color-text);
+
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.messagebox-content p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.messagebox-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.messagebox-cancel,
+.messagebox-confirm {
+  min-width: 82px;
+  height: 38px;
+
+  padding: 0 16px;
+  border-radius: 8px;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.messagebox-cancel {
+  border: 1px solid var(--color-border);
+  background: #ffffff;
+  color: var(--color-text-secondary);
+}
+
+.messagebox-cancel:hover {
+  background: var(--color-background);
+}
+
+.messagebox-confirm {
+  border: 1px solid transparent;
+  background: var(--color-info);
+  color: var(--color-white);
+}
+
+.messagebox-confirm:hover {
+  background: var(--color-info-dark);
+}
+
+.messagebox-confirm.success {
+  background: var(--color-success);
+}
+
+.messagebox-confirm.success:hover {
+  background: var(--color-success-dark);
+}
+
+.messagebox-confirm.error {
+  background: var(--color-danger);
+}
+
+.messagebox-confirm.error:hover {
+  background: var(--color-danger-dark);
+}
+
+.messagebox-confirm.warning {
+  background: var(--color-warning);
+}
+
+.messagebox-confirm.warning:hover {
+  background: var(--color-warning-dark);
+}
+
+.messagebox-confirm.info {
+  background: var(--color-info);
+}
+
+.messagebox-confirm.info:hover {
+  background: var(--color-info-dark);
+}
+
+@media (max-width: 768px) {
+
+  .messagebox {
+    padding: 15px;
+    border-radius: 10px;
+    max-width: 350px;
+  }
+
+  .messagebox-content h3 {
+    font-size: 17px;
+  }
+
+  .messagebox-actions {
+    margin-top: 20px;
+  }
+
+  .messagebox-cancel,
+  .messagebox-confirm {
+    flex: 1;
+  }
+}

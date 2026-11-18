@@ -1,0 +1,30 @@
+:root{
+  --color-spin: #8b5cf6;
+  --color-white: #ffffff;
+  --color-background-overlay: rgb(0, 0, 0, 0.25);
+  --color-background-overlay-5: rgb(0, 0, 0, 0.5);
+  --color-border: #e5e5e5;
+
+  --color-success-light:#ecfdf5;
+  --color-success: #059669;
+  --color-success-dark: #2e7d32;
+
+  --color-warning-light:#fffbeb;
+  --color-warning: #ed8b00;
+  --color-warning-dark: #b45309;
+
+  --color-danger-light: #fef2f2;
+  --color-danger: #dc2626;
+  --color-danger-dark: #b91c1c;
+
+  --color-info-light: #eff6ff;
+  --color-info: #2563eb;
+  --color-info-dark: #1d4ed8;
+}
+
+html, body{
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+}

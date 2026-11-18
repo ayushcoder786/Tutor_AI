@@ -1,0 +1,103 @@
+.register-form-content {
+	width: min(100%, 440px);
+}
+
+.register-fields-row {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 14px;
+}
+
+.register-field {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 16px;
+}
+
+.register-field label {
+	margin-bottom: 9px;
+	color: #393443;
+	font-size: 13px;
+	font-weight: 650;
+}
+
+.register-field input {
+	min-width: 0;
+}
+
+#firstname,
+#lastname {
+	text-transform: uppercase;
+}
+
+.register-form .login-submit:disabled {
+	cursor: wait;
+	opacity: 0.75;
+}
+
+.register-message {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	margin: -12px 0 18px;
+	padding: 12px 14px;
+	border: 1px solid;
+	border-radius: 6px;
+	font-size: 13px;
+	line-height: 1.5;
+}
+
+.register-message-success {
+	border-color: #bfdfc9;
+	background: #f1faf3;
+	color: #285d38;
+}
+
+.register-message-error {
+	border-color: #efcaca;
+	background: #fff5f5;
+	color: #9c3434;
+}
+
+.register-message a {
+	align-self: flex-start;
+	color: inherit;
+	font-weight: 700;
+}
+
+.login-switch {
+	margin: 20px 0 0;
+	color: var(--login-muted);
+	text-align: center;
+	font-size: 13px;
+}
+
+.login-switch a {
+	color: var(--login-violet);
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.login-switch a:hover {
+	text-decoration: underline;
+}
+
+@media (max-height: 720px) {
+	.register-field {
+		margin-bottom: 10px;
+	}
+
+	.register-message {
+		margin-bottom: 12px;
+	}
+
+	.login-switch {
+		margin-top: 12px;
+	}
+}
+
+@media (max-width: 380px) {
+	.register-fields-row {
+		gap: 10px;
+	}
+}
