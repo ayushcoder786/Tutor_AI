@@ -13,6 +13,11 @@
 }
 
 .app-layout {
+<<<<<<< HEAD
+	position: fixed;
+	inset: 0;
+=======
+>>>>>>> 1e7495493850cf05bf081d6a2b02d57236344291
 	display: grid;
 	grid-template-columns: 252px minmax(0, 1fr);
 	grid-template-rows: minmax(0, 1fr);
@@ -20,6 +25,10 @@
 	height: 100vh;
 	height: 100dvh;
 	min-height: 0;
+<<<<<<< HEAD
+	overflow: hidden;
+=======
+>>>>>>> 1e7495493850cf05bf081d6a2b02d57236344291
 	background: var(--app-canvas);
 	color: var(--app-ink);
 	font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;

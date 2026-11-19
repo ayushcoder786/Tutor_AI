@@ -36,6 +36,54 @@ export function callApi(reqMethod, endPoint, jsonData, formData, resHandler, jwt
         });
 }
 
+<<<<<<< HEAD
+export async function callApiStream(endPoint, jsonData, jwtToken, onChunk, signal)
+{
+    const URL = VITE_API_BASE_URL + endPoint;
+    const headers = {"Content-Type": "application/json"};
+    if (jwtToken) headers["Authorization"] = `Bearer ${jwtToken}`;
+
+    const res = await fetch(URL, {
+        method: "POST",
+        headers,
+        credentials: "include",
+        body: JSON.stringify(jsonData),
+        signal
+    });
+
+    if (res.status === 401) {
+        localStorage.clear();
+        window.location.replace("/login");
+        throw new Error("Session Expired!");
+    }
+
+    if (!res.ok) {
+        throw new Error(res.status + ": " + res.statusText);
+    }
+
+    if (!res.body) {
+        throw new Error("This browser does not support streaming responses.");
+    }
+
+    const reader = res.body.getReader();
+    const decoder = new TextDecoder();
+    let response = "";
+
+    while (true) {
+        const {done, value} = await reader.read();
+        const chunk = decoder.decode(value, {stream: !done});
+        if (chunk) {
+            response += chunk;
+            onChunk(chunk, response);
+        }
+        if (done) break;
+    }
+
+    return response;
+}
+
+=======
+>>>>>>> 1e7495493850cf05bf081d6a2b02d57236344291
 export function callApiDownload(reqMethod, endPoint, resHandler, progressHandler, jwtToken = "", isRetry = false)
 {
     const URL = VITE_API_BASE_URL + endPoint;
