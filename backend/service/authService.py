@@ -1,5 +1,7 @@
 from datetime import datetime, timezone
-from service.jwtService import generateToken
+from service.jwtService import generateToken, validateToken
+from bson import ObjectId
+
 async def signup(data, db):
     email = data.email.strip().lower()
     users_collection = db["users"]
@@ -66,3 +68,55 @@ async def login(data, db):
 
     except Exception as e:
         return {"status": False, "message": str(e)}
+
+
+async def rbac(token, db):
+    try:
+        payload = validateToken(token)
+
+        if not payload or not payload.get("userid"):
+            raise Exception("Invalid or expired token")
+
+        userid = payload["userid"]
+
+        if not ObjectId.is_valid(userid):
+            raise Exception("Invalid user ID")
+
+        user = await db["users"].find_one({
+            "_id": ObjectId(userid),
+            "isactive": True
+        })
+
+        if not user:
+            raise Exception("User not found or inactive")
+
+        role = user.get("role")
+
+        menus = await db["menus"].find(
+            {"roles": role},
+            {
+                "_id": 0,
+                "menu": 1,
+                "path": 1,
+                "icon": 1,
+                "displayorder": 1
+            }
+        ).to_list(length=None)
+
+        return {
+            "status": True,
+            "message": "RBAC data fetched successfully",
+            "user": {
+                "firstname": user["firstname"],
+                "lastname": user["lastname"]
+            },
+            "role": role,
+            "menus": menus
+        }
+
+    except Exception as e:
+        return {
+            "status": False,
+            "message": str(e)
+        }
+

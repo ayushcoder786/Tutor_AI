@@ -12,3 +12,16 @@ async def signup(data: SignupModel, request:Request):
 async def login(data: LoginModel, request:Request):
     return await auth.login(data, request.app.state.db)
 
+@router.get("/rbac")
+async def rbac(request: Request):
+    authorization = request.headers.get("Authorization", "")
+
+    if not authorization.startswith("Bearer "):
+        return {
+            "status": False,
+            "message": "Authorization token missing"
+        }
+
+    token = authorization.split(" ", 1)[1]
+
+    return await auth.rbac(token, request.app.state.db)

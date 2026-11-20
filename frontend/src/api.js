@@ -36,7 +36,6 @@ export function callApi(reqMethod, endPoint, jsonData, formData, resHandler, jwt
         });
 }
 
-<<<<<<< HEAD
 export async function callApiStream(endPoint, jsonData, jwtToken, onChunk, signal)
 {
     const URL = VITE_API_BASE_URL + endPoint;
@@ -82,8 +81,6 @@ export async function callApiStream(endPoint, jsonData, jwtToken, onChunk, signa
     return response;
 }
 
-=======
->>>>>>> 1e7495493850cf05bf081d6a2b02d57236344291
 export function callApiDownload(reqMethod, endPoint, resHandler, progressHandler, jwtToken = "", isRetry = false)
 {
     const URL = VITE_API_BASE_URL + endPoint;

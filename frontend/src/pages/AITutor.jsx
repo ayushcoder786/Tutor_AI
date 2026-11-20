@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import {useEffect, useRef, useState} from "react";
 import {
     Lightbulb,
@@ -252,7 +251,7 @@ const AITutor = () => {
                             onClick={() => setActiveTab("stream")}
                         >
                             <Zap size={15} aria-hidden="true" />
-                            Streaming answer
+                            Live streaming
                             <span className="tutor-live-indicator" aria-hidden="true" />
                         </button>
                     </div>
@@ -352,16 +351,5 @@ const AITutor = () => {
         </div>
     );
 };
-=======
-import React from 'react';
-
-const AITutor = () => {
-    return (
-        <div>
-            AI Tutor
-        </div>
-    );
-}
->>>>>>> 1e7495493850cf05bf081d6a2b02d57236344291
 
 export default AITutor;
